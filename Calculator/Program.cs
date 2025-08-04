@@ -1,10 +1,4 @@
-﻿
-// add, sub, mult, div methods
-// while
-// ask for input
-// switch cases for math methods
-
-bool running = true;
+﻿bool running = true;
 
 while (running)
 {
@@ -25,7 +19,7 @@ while (running)
    switch (keyPressed)
    {
       case 'A':
-         // Add()
+         Add();
          Console.WriteLine("Addition");
          break;
       case 'S':
@@ -47,6 +41,23 @@ while (running)
       default:
          Console.WriteLine("Unknown option");
          break;
+   }
+
+}
+
+static void Add()
+{
+   Console.WriteLine($"Enter two numbers to add, separated by a comma");
+
+   string[] userInput = Console.ReadLine().Split(",");
+
+   int num1;
+   int num2;
+
+   if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
+   {
+      int result = num1 + num2;
+      Console.WriteLine($"{num1} + {num2} = {result}");
    }
 
 }
