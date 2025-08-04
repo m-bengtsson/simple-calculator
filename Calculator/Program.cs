@@ -19,20 +19,20 @@ while (running)
    switch (keyPressed)
    {
       case 'A':
-         Add();
          Console.WriteLine("Addition");
+         Add();
          break;
       case 'S':
-         // Subtract()
          Console.WriteLine("Subtraction");
+         Subtract();
          break;
       case 'M':
-         // Multiply()
          Console.WriteLine("Multiplication");
+         Multiply();
          break;
       case 'D':
-         // Divide()
          Console.WriteLine("Division");
+         Divide();
          break;
       case 'Q':
          Console.WriteLine("Exit");
@@ -58,6 +58,57 @@ static void Add()
    {
       int result = num1 + num2;
       Console.WriteLine($"{num1} + {num2} = {result}");
+   }
+
+}
+
+static void Subtract()
+{
+   Console.WriteLine($"Enter two numbers to subract, separated by a comma");
+
+   string[] userInput = Console.ReadLine().Split(",");
+
+   int num1;
+   int num2;
+
+   if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
+   {
+      int result = num1 - num2;
+      Console.WriteLine($"{num1} - {num2} = {result}");
+   }
+
+}
+
+static void Multiply()
+{
+   Console.WriteLine($"Enter two numbers to subract, separated by a comma");
+
+   string[] userInput = Console.ReadLine().Split(",");
+
+   int num1;
+   int num2;
+
+   if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
+   {
+      int result = num1 * num2;
+      Console.WriteLine($"{num1} * {num2} = {result}");
+   }
+
+}
+
+static void Divide()
+{
+   Console.WriteLine($"Enter two numbers to subract, separated by a comma");
+
+   string[] userInput = Console.ReadLine().Split(",");
+
+   int num1;
+   int num2;
+
+   if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
+   {
+      double result = 1.0 * num1 / num2;
+      Console.WriteLine($"{num1} / {num2} = {result}");
    }
 
 }
