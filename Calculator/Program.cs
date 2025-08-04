@@ -3,8 +3,7 @@
 while (running)
 {
    // Menu
-   Console.WriteLine("Choose an option:");
-
+   Console.WriteLine("\nChoose an option:");
    Console.WriteLine("A for addition");
    Console.WriteLine("S for subtraction");
    Console.WriteLine("M for multiplication");
@@ -14,7 +13,7 @@ while (running)
    ConsoleKeyInfo userInput = Console.ReadKey();
    Console.Write(" - ");
 
-   char keyPressed = userInput.KeyChar;
+   char keyPressed = char.ToUpper(userInput.KeyChar);
 
    switch (keyPressed)
    {
@@ -107,7 +106,7 @@ static void Divide()
 
    if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
    {
-      double result = 1.0 * num1 / num2;
+      double result = (double)num1 / num2;
       Console.WriteLine($"{num1} / {num2} = {result}");
    }
    else
