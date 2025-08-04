@@ -12,7 +12,7 @@ while (running)
    Console.WriteLine("Q for quit");
 
    ConsoleKeyInfo userInput = Console.ReadKey();
-   Console.Write("- ");
+   Console.Write(" - ");
 
    char keyPressed = userInput.KeyChar;
 
@@ -81,7 +81,7 @@ static void Subtract()
 
 static void Multiply()
 {
-   Console.WriteLine($"Enter two numbers to subract, separated by a comma");
+   Console.WriteLine($"Enter two numbers to multiply, separated by a comma");
 
    string[] userInput = Console.ReadLine().Split(",");
 
@@ -98,7 +98,7 @@ static void Multiply()
 
 static void Divide()
 {
-   Console.WriteLine($"Enter two numbers to subract, separated by a comma");
+   Console.WriteLine($"Enter two numbers to divide, separated by a comma");
 
    string[] userInput = Console.ReadLine().Split(",");
 
@@ -109,6 +109,10 @@ static void Divide()
    {
       double result = 1.0 * num1 / num2;
       Console.WriteLine($"{num1} / {num2} = {result}");
+   }
+   else
+   {
+      Console.WriteLine($"Invalid number");
    }
 
 }
