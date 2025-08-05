@@ -43,15 +43,13 @@ while (running)
    }
 }
 
+// Try parse two integers from user input and assign them to "numbers" if return is true.
 static bool TryGetNumbers(out (int, int) numbers)
 {
    Console.WriteLine($"Enter two numbers, separated by a comma");
    string[] userInput = Console.ReadLine().Split(",");
 
-   int num1;
-   int num2;
-
-   if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
+   if (int.TryParse(userInput[0], out int num1) && int.TryParse(userInput[1], out int num2))
    {
       numbers = (num1, num2);
       return true;
@@ -62,37 +60,36 @@ static bool TryGetNumbers(out (int, int) numbers)
 
 static void Add()
 {
-   if (TryGetNumbers(out (int, int) numbers))
+   if (TryGetNumbers(out (int num1, int num2) numbers))
    {
-      int result = numbers.Item1 + numbers.Item2;
-      Console.WriteLine($"{numbers.Item1} + {numbers.Item2} = {result}");
+      int result = numbers.num1 + numbers.num2;
+      Console.WriteLine($"{numbers.num1} + {numbers.num2} = {result}");
    }
-
 }
 
 static void Subtract()
 {
-   if (TryGetNumbers(out (int, int) numbers))
+   if (TryGetNumbers(out (int num1, int num2) numbers))
    {
-      int result = numbers.Item1 + numbers.Item2;
-      Console.WriteLine($"{numbers.Item1} + {numbers.Item2} = {result}");
+      int result = numbers.num1 + numbers.num2;
+      Console.WriteLine($"{numbers.num1} - {numbers.num2} = {result}");
    }
 }
 
 static void Multiply()
 {
-   if (TryGetNumbers(out (int, int) numbers))
+   if (TryGetNumbers(out (int num1, int num2) numbers))
    {
-      int result = numbers.Item1 + numbers.Item2;
-      Console.WriteLine($"{numbers.Item1} + {numbers.Item2} = {result}");
+      int result = numbers.num1 + numbers.num2;
+      Console.WriteLine($"{numbers.num1} * {numbers.num2} = {result}");
    }
 }
 
 static void Divide()
 {
-   if (TryGetNumbers(out (int, int) numbers))
+   if (TryGetNumbers(out (int num1, int num2) numbers))
    {
-      double result = (double)numbers.Item1 / numbers.Item2;
-      Console.WriteLine($"{numbers.Item1} / {numbers.Item2} = {result}");
+      double result = (double)numbers.num1 / numbers.num2;
+      Console.WriteLine($"{numbers.num1} / {numbers.num2} = {result}");
    }
 }
