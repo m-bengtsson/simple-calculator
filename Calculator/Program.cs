@@ -41,13 +41,11 @@ while (running)
          Console.WriteLine("Unknown option");
          break;
    }
-
 }
 
-static void Add()
+static bool TryGetNumbers(out (int, int) numbers)
 {
-   Console.WriteLine($"Enter two numbers to add, separated by a comma");
-
+   Console.WriteLine($"Enter two numbers, separated by a comma");
    string[] userInput = Console.ReadLine().Split(",");
 
    int num1;
@@ -55,63 +53,46 @@ static void Add()
 
    if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
    {
-      int result = num1 + num2;
-      Console.WriteLine($"{num1} + {num2} = {result}");
+      numbers = (num1, num2);
+      return true;
+   }
+   numbers = (0, 0);
+   return false;
+}
+
+static void Add()
+{
+   if (TryGetNumbers(out (int, int) numbers))
+   {
+      int result = numbers.Item1 + numbers.Item2;
+      Console.WriteLine($"{numbers.Item1} + {numbers.Item2} = {result}");
    }
 
 }
 
 static void Subtract()
 {
-   Console.WriteLine($"Enter two numbers to subract, separated by a comma");
-
-   string[] userInput = Console.ReadLine().Split(",");
-
-   int num1;
-   int num2;
-
-   if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
+   if (TryGetNumbers(out (int, int) numbers))
    {
-      int result = num1 - num2;
-      Console.WriteLine($"{num1} - {num2} = {result}");
+      int result = numbers.Item1 + numbers.Item2;
+      Console.WriteLine($"{numbers.Item1} + {numbers.Item2} = {result}");
    }
-
 }
 
 static void Multiply()
 {
-   Console.WriteLine($"Enter two numbers to multiply, separated by a comma");
-
-   string[] userInput = Console.ReadLine().Split(",");
-
-   int num1;
-   int num2;
-
-   if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
+   if (TryGetNumbers(out (int, int) numbers))
    {
-      int result = num1 * num2;
-      Console.WriteLine($"{num1} * {num2} = {result}");
+      int result = numbers.Item1 + numbers.Item2;
+      Console.WriteLine($"{numbers.Item1} + {numbers.Item2} = {result}");
    }
-
 }
 
 static void Divide()
 {
-   Console.WriteLine($"Enter two numbers to divide, separated by a comma");
-
-   string[] userInput = Console.ReadLine().Split(",");
-
-   int num1;
-   int num2;
-
-   if (int.TryParse(userInput[0], out num1) && int.TryParse(userInput[1], out num2))
+   if (TryGetNumbers(out (int, int) numbers))
    {
-      double result = (double)num1 / num2;
-      Console.WriteLine($"{num1} / {num2} = {result}");
+      double result = (double)numbers.Item1 / numbers.Item2;
+      Console.WriteLine($"{numbers.Item1} / {numbers.Item2} = {result}");
    }
-   else
-   {
-      Console.WriteLine($"Invalid number");
-   }
-
 }
