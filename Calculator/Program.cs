@@ -65,6 +65,10 @@ static void Add()
       int result = numbers.num1 + numbers.num2;
       Console.WriteLine($"{numbers.num1} + {numbers.num2} = {result}");
    }
+   else
+   {
+      Console.WriteLine("Invalid input");
+   }
 }
 
 static void Subtract()
@@ -73,6 +77,10 @@ static void Subtract()
    {
       int result = numbers.num1 + numbers.num2;
       Console.WriteLine($"{numbers.num1} - {numbers.num2} = {result}");
+   }
+   else
+   {
+      Console.WriteLine("Invalid input");
    }
 }
 
@@ -83,6 +91,10 @@ static void Multiply()
       int result = numbers.num1 + numbers.num2;
       Console.WriteLine($"{numbers.num1} * {numbers.num2} = {result}");
    }
+   else
+   {
+      Console.WriteLine("Invalid input");
+   }
 }
 
 static void Divide()
@@ -91,5 +103,9 @@ static void Divide()
    {
       double result = (double)numbers.num1 / numbers.num2;
       Console.WriteLine($"{numbers.num1} / {numbers.num2} = {result}");
+   }
+   else
+   {
+      Console.WriteLine("Invalid input");
    }
 }
