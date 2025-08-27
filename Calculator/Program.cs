@@ -1,111 +1,93 @@
-﻿bool running = true;
+﻿namespace Calculator;
 
-while (running)
+public class Program
 {
-   // Menu
-   Console.WriteLine("\nChoose an option:");
-   Console.WriteLine("A for addition");
-   Console.WriteLine("S for subtraction");
-   Console.WriteLine("M for multiplication");
-   Console.WriteLine("D for division");
-   Console.WriteLine("Q for quit");
-
-   ConsoleKeyInfo userInput = Console.ReadKey();
-   Console.Write(" - ");
-
-   char keyPressed = char.ToUpper(userInput.KeyChar);
-
-   switch (keyPressed)
+   public static void Calculate(char operation)
    {
-      case 'A':
-         Console.WriteLine("Addition");
-         Add();
-         break;
-      case 'S':
-         Console.WriteLine("Subtraction");
-         Subtract();
-         break;
-      case 'M':
-         Console.WriteLine("Multiplication");
-         Multiply();
-         break;
-      case 'D':
-         Console.WriteLine("Division");
-         Divide();
-         break;
-      case 'Q':
-         Console.WriteLine("Exit");
-         running = false;
-         break;
-      default:
-         Console.WriteLine("Unknown option");
-         break;
+      Operations op = new Operations();
+      Tuple<int, int> numbers = op.TryGetNumbers();
+
+      string output = "";
+      switch (operation)
+      {
+         case '+':
+            output = $"{numbers.Item1} + {numbers.Item2} = {op.Add(numbers.Item1, numbers.Item2)} ";
+            break;
+         case '-':
+            output = $"{numbers.Item1} - {numbers.Item2} = {op.Subtract(numbers.Item1, numbers.Item2)} ";
+            break;
+         case '*':
+            output = $"{numbers.Item1} * {numbers.Item2} = {op.Multiply(numbers.Item1, numbers.Item2)} ";
+            break;
+         case '/':
+            if (numbers.Item2 == 0)
+            {
+               Console.WriteLine("Cannot divide by zero");
+               break;
+            }
+            output = $"{numbers.Item1} / {numbers.Item2} = {op.Divide(numbers.Item1, numbers.Item2)} ";
+            break;
+         default:
+            Console.WriteLine("Unknown operation");
+            output = "Unknown";
+            break;
+      }
+      Console.WriteLine(output);
    }
+   static void Main()
+   {
+
+      bool running = true;
+
+      while (running)
+      {
+         // Operations calculate = new Operations();
+         // Menu
+         Console.WriteLine("\nChoose an option:");
+         Console.WriteLine("A for addition");
+         Console.WriteLine("S for subtraction");
+         Console.WriteLine("M for multiplication");
+         Console.WriteLine("D for division");
+         Console.WriteLine("Q for quit");
+
+         ConsoleKeyInfo userInput = Console.ReadKey();
+         Console.Write(" - ");
+
+         char keyPressed = char.ToUpper(userInput.KeyChar);
+
+         switch (keyPressed)
+         {
+            case 'A':
+               Console.WriteLine("Addition");
+               Calculate('+');
+
+               break;
+            case 'S':
+               Console.WriteLine("Subtraction");
+               Calculate('-');
+
+               //calculate.Subtract();
+               break;
+            case 'M':
+               Console.WriteLine("Multiplication");
+               //calculate.Multiply();
+               Calculate('*');
+               break;
+            case 'D':
+               Console.WriteLine("Division");
+               Calculate('/');
+               break;
+            case 'Q':
+               Console.WriteLine("Exit");
+               running = false;
+               break;
+            default:
+               Console.WriteLine("Unknown option");
+               break;
+         }
+      }
+   }
+
 }
 
-// Try parse two integers from user input and assign them to "numbers" if return is true.
-static bool TryGetNumbers(out (int, int) numbers)
-{
-   Console.WriteLine($"Enter two numbers, separated by a comma");
-   string[] userInput = Console.ReadLine().Split(",");
 
-   if (int.TryParse(userInput[0], out int num1) && int.TryParse(userInput[1], out int num2))
-   {
-      numbers = (num1, num2);
-      return true;
-   }
-   numbers = (0, 0);
-   return false;
-}
-
-static void Add()
-{
-   if (TryGetNumbers(out (int num1, int num2) numbers))
-   {
-      int result = numbers.num1 + numbers.num2;
-      Console.WriteLine($"{numbers.num1} + {numbers.num2} = {result}");
-   }
-   else
-   {
-      Console.WriteLine("Invalid input");
-   }
-}
-
-static void Subtract()
-{
-   if (TryGetNumbers(out (int num1, int num2) numbers))
-   {
-      int result = numbers.num1 + numbers.num2;
-      Console.WriteLine($"{numbers.num1} - {numbers.num2} = {result}");
-   }
-   else
-   {
-      Console.WriteLine("Invalid input");
-   }
-}
-
-static void Multiply()
-{
-   if (TryGetNumbers(out (int num1, int num2) numbers))
-   {
-      int result = numbers.num1 + numbers.num2;
-      Console.WriteLine($"{numbers.num1} * {numbers.num2} = {result}");
-   }
-   else
-   {
-      Console.WriteLine("Invalid input");
-   }
-}
-
-static void Divide()
-{
-   if (TryGetNumbers(out (int num1, int num2) numbers))
-   {
-      double result = (double)numbers.num1 / numbers.num2;
-      Console.WriteLine($"{numbers.num1} / {numbers.num2} = {result}");
-   }
-   else
-   {
-      Console.WriteLine("Invalid input");
-   }
-}
