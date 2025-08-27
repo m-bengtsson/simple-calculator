@@ -6,15 +6,24 @@ public class Operations
    public Tuple<int, int> TryGetNumbers()
    {
       Console.WriteLine($"Enter two numbers, separated by a comma");
-      string[] userInput = Console.ReadLine().Split(",");
+      string? input = Console.ReadLine();
 
+      if (input == null)
+      {
+         Console.WriteLine("Invalid input");
+         return Tuple.Create(0, 0); ;
+      }
+      string[]? userInput = input.Split(",");
+      if (userInput.Length != 2)
+      {
+         Console.WriteLine("Please enter exactly two numbers");
+         return Tuple.Create(0, 0);
+      }
       if (int.TryParse(userInput[0], out int num1) && int.TryParse(userInput[1], out int num2))
       {
-
          return Tuple.Create(num1, num2);
       }
-      Console.WriteLine("Invalid input");
-      return Tuple.Create(0, 0); ;
+      return Tuple.Create(0, 0);
    }
    public int Add(int x, int y) =>
          x + y;
