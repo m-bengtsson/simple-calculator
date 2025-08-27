@@ -20,11 +20,6 @@ public class Program
             output = $"{numbers.Item1} * {numbers.Item2} = {op.Multiply(numbers.Item1, numbers.Item2)} ";
             break;
          case '/':
-            if (numbers.Item2 == 0)
-            {
-               Console.WriteLine("Cannot divide by zero");
-               break;
-            }
             output = $"{numbers.Item1} / {numbers.Item2} = {op.Divide(numbers.Item1, numbers.Item2)} ";
             break;
          default:

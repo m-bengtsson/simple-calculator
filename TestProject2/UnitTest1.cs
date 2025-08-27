@@ -47,4 +47,10 @@ public class OperationsTests
         var result = op.Divide(a, b);
         Assert.Equal(expected, result);
     }
+    [Fact]
+    public void Divide_ByZero_ThrowsException()
+    {
+        Operations op = new Operations();
+        Assert.Throws<DivideByZeroException>(() => op.Divide(5, 0));
+    }
 }

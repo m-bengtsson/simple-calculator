@@ -24,60 +24,16 @@ public class Operations
 
    public int Multiply(int x, int y) =>
        x * y;
-   public double Divide(int x, int y) =>
-       (double)x / y;
-
-
-   // public void Add()
-   // {
-   //    if (TryGetNumbers(out (int num1, int num2) numbers))
-   //    {
-   //       int result = numbers.num1 + numbers.num2;
-   //       Console.WriteLine($"{numbers.num1} + {numbers.num2} = {result}");
-   //    }
-   //    else
-   //    {
-   //       Console.WriteLine("Invalid input");
-   //    }
-   // }
-
-   // public void Subtract()
-   // {
-   //    if (TryGetNumbers(out (int num1, int num2) numbers))
-   //    {
-   //       int result = numbers.num1 + numbers.num2;
-   //       Console.WriteLine($"{numbers.num1} - {numbers.num2} = {result}");
-   //    }
-   //    else
-   //    {
-   //       Console.WriteLine("Invalid input");
-   //    }
-   // }
-
-   // public void Multiply()
-   // {
-   //    if (TryGetNumbers(out (int num1, int num2) numbers))
-   //    {
-   //       int result = numbers.num1 + numbers.num2;
-   //       Console.WriteLine($"{numbers.num1} * {numbers.num2} = {result}");
-   //    }
-   //    else
-   //    {
-   //       Console.WriteLine("Invalid input");
-   //    }
-   // }
-
-   // public void Divide()
-   // {
-   //    if (TryGetNumbers(out (int num1, int num2) numbers))
-   //    {
-   //       double result = (double)numbers.num1 / numbers.num2;
-   //       Console.WriteLine($"{numbers.num1} / {numbers.num2} = {result}");
-   //    }
-   //    else
-   //    {
-   //       Console.WriteLine("Invalid input");
-   //    }
-   // }
+   public double Divide(int x, int y)
+   {
+      if (y == 0)
+      {
+         throw new DivideByZeroException();
+      }
+      else
+      {
+         return (double)x / y;
+      }
+   }
 }
 
