@@ -63,4 +63,18 @@ public class OperationsTests
         var result = op.TryGetNumbers(() => "3,4");
         Assert.Equal(Tuple.Create(3, 4), result);
     }
+    // Invalid inputs
+    [Theory]
+    [InlineData(null)]
+    [InlineData("abc,def")]
+    [InlineData("1,2,3")]
+    [InlineData("1")]
+    [InlineData("5+3")]
+    public void TryGetNumbers_InvalidInput_ReturnsZero(string? input)
+    {
+        Operations op = new Operations();
+        // Simulate user input
+        var result = op.TryGetNumbers(() => input);
+        Assert.Equal(Tuple.Create(0, 0), result);
+    }
 }
