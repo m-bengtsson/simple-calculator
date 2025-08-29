@@ -3,10 +3,11 @@ namespace Calculator;
 public class Operations
 {
    // Try parse two integers from user input and assign them to "numbers" if return is true.
-   public Tuple<int, int> TryGetNumbers()
+   // Make it possible to insert a function to read input for easier testing.
+   public Tuple<int, int> TryGetNumbers(Func<string?> readInput)
    {
       Console.WriteLine($"Enter two numbers, separated by a comma");
-      string? input = Console.ReadLine();
+      string? input = readInput();
 
       if (input == null)
       {
@@ -25,6 +26,7 @@ public class Operations
       }
       return Tuple.Create(0, 0);
    }
+
    public int Add(int x, int y) =>
          x + y;
 

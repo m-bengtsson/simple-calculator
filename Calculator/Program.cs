@@ -5,7 +5,8 @@ public class Program
    public static void Calculate(char operation)
    {
       Operations op = new Operations();
-      Tuple<int, int> numbers = op.TryGetNumbers();
+      // Callback to read input
+      Tuple<int, int> numbers = op.TryGetNumbers(() => Console.ReadLine());
 
       string output = "";
       switch (operation)

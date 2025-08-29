@@ -53,4 +53,14 @@ public class OperationsTests
         Operations op = new Operations();
         Assert.Throws<DivideByZeroException>(() => op.Divide(5, 0));
     }
+
+    [Fact]
+    public void TryGetNumbers_ValidInput_ReturnsNumbers()
+    {
+        Operations op = new Operations();
+
+        // Simulate user input
+        var result = op.TryGetNumbers(() => "3,4");
+        Assert.Equal(Tuple.Create(3, 4), result);
+    }
 }
